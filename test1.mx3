@@ -1,0 +1,22 @@
+ngridx := 128
+ngridy :=128
+szx := 100e-9
+szy := 100e-9
+szz := 1e-9
+
+SetGridsize(ngridx, ngridy, 1)
+SetCellsize(szx/ngridx, szy/ngridy, szz)
+
+Msat  = 800e3
+Aex   = 13e-12
+alpha = 0.02
+
+m = uniform(1, .1, 0)
+relax()
+save(m)    // relaxed state
+
+autosave(m, 200e-12)
+tableautosave(10e-12)
+
+B_ext = vector(-24.6E-3, 4.3E-3, 0)
+run(1e-9)
